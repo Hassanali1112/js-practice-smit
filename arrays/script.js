@@ -10,12 +10,21 @@ let product = {
   ],
   reviews :[
     {id :1 , name : "taimoor", comment :" good product", ratings : 4, status : true},
-    {id :1 , name : "hassan", comment :"easy to use", ratings : 4.5, status : true},
-    {id :1 , name : "abdul rehman", comment :"average", ratings : 2, status : false},
+    {id :2 , name : "hassan", comment :"easy to use", ratings : 4.5, status : true},
+    {id :3 , name : "abdul rehman", comment :"average", ratings : 2, status : false},
   ]
 };
+let sum = 0;
 
-console.log(product.) 
+for(let i =0; i < product.reviews.length; i++){
+
+  if(product.reviews[i].ratings){
+   
+    sum += product.reviews[i].ratings
+  }
+}
+console.log("total ratings is " +sum/product.reviews.length )
+// console.log(product.reviews.length )
 
 // -------------------------------------------------------------------------------------------
 // let product = {
