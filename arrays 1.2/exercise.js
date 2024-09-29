@@ -197,6 +197,15 @@ let products = [
         date: "07-02-2021",
         status: true,
       },
+      {
+        id: 4,
+        user: "AliAhmed",
+        rating: 4.9,
+        title: "Awesome",
+        comments: "Ali: Best smartwatch I've owned!",
+        date: "07-02-2021",
+        status: true,
+      },
     ],
   },
   {
@@ -241,8 +250,6 @@ let products = [
   },
 ];
 
-
-
 // Exercise 1:
 // Get all the variations where the price is greater than 50000.
 // Example: [ { color: 'red', price: 52000 }, { color: 'silver', price: 55000 } ]
@@ -273,10 +280,10 @@ let products = [
 //        let title = products[i].title;
 //        console.log(title)
 //        if(titlesOfProductsQuantityFive.indexOf(title)=== -1){
-        
+
 //          titlesOfProductsQuantityFive.push(products[i].title)
 //        }
-        
+
 //       }
 
 //     }
@@ -289,37 +296,59 @@ let products = [
 // Exercise 03:
 // Find the product with the highest average review rating.
 // Example: { title: 'Headphones', averageRating: 4.7 }
-function productWithHeightAveRating (products){
-  let maxAverageRatings = 0;
-  let maxAverageItem;
-  for(let i =0; i < products.length; i++){
-    let sum = 0;
-    let average = null;
+// function productWithHeightAveRating (products){
+//   let maxAverageRatings = 0;
+//   let maxAverageItem;
+//   for(let i =0; i < products.length; i++){
+//     let sum = 0;
+//     let average = null;
 
-    for(let j=0; j < products[i].reviews.length; j++){
-      sum += products[i].reviews[j].rating;
-    
-     }
-    average = sum / products[i].reviews.length;
-    if(maxAverageRatings < average){
-      maxAverageRatings = average;
-      maxAverageItem = {
-        "title" : products[i].title,
-        "maxAverage" : average
-      }
-  
-    }
+//     for(let j=0; j < products[i].reviews.length; j++){
+//       sum += products[i].reviews[j].rating;
 
+//      }
+//     average = sum / products[i].reviews.length;
+//     if(maxAverageRatings < average){
+//       maxAverageRatings = average;
+//       maxAverageItem = {
+//         "title" : products[i].title,
+//         "maxAverage" : average
+//       }
 
-  }
-  return maxAverageItem;
-}
-let result = productWithHeightAveRating(products);
-console.log(result)
+//     }
+
+//   }
+//   return maxAverageItem;
+// }
+// let result = productWithHeightAveRating(products);
+// console.log(result)
 
 // Exercise 4:
 // List the colors available for the product with the most reviews.
 // Example: [ 'black', 'silver', 'gold' ]
+
+function productWithMostReviews(products) {
+  let colorsOFMostReviewsProduct = [];
+  let item = null;
+  let productLength = 0;
+  for (let i = 0; i < products.length; i++) {
+    for (let j = 0; j < products[i].reviews.length; j++) {
+      if (products[i].reviews.length > productLength) {
+        productLength = products[i].reviews.length;
+        item = products[i];
+        console.log(productLength);
+        console.log(item.length);
+        // debugger;
+        for (let k = 0; k < item.length; k++) {
+          colorsOFMostReviewsProduct.push(item.variations[k].color);
+        }
+      }
+    }
+  }
+  return colorsOFMostReviewsProduct;
+}
+let allColorsOfMostReviewedProduct = productWithMostReviews(products);
+console.log(allColorsOfMostReviewedProduct);
 
 // Exercise 5:
 // Calculate the total number of unique users who have left reviews across all products.
