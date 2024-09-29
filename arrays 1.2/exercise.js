@@ -13,7 +13,7 @@ let products = [
       {
         id: 1,
         user: "Ahmad",
-        rating: 4.0,
+        rating: 4.6,
         title: "Good Product",
         comments: "It is a very good product ....",
         date: "06-02-2021",
@@ -31,7 +31,7 @@ let products = [
       {
         id: 3,
         user: "Ali",
-        rating: 5.0,
+        rating: 3.9,
         title: "Excellent Product",
         comments: "Ali: I absolutely love it!",
         date: "04-02-2021",
@@ -53,7 +53,7 @@ let products = [
       {
         id: 1,
         user: "Ahmad",
-        rating: 4.0,
+        rating: 3.4,
         title: "Good Product",
         comments: "It is a very good product ....",
         date: "06-02-2021",
@@ -62,7 +62,7 @@ let products = [
       {
         id: 2,
         user: "Zubair",
-        rating: 4.5,
+        rating: 2.5,
         title: "Very Good Product",
         comments: "Zubair: It is a very good product ....",
         date: "05-02-2021",
@@ -71,7 +71,7 @@ let products = [
       {
         id: 3,
         user: "Ali",
-        rating: 5.0,
+        rating: 3.0,
         title: "Best Mobile",
         comments: "Ali: Perfect for my needs!",
         date: "04-02-2021",
@@ -93,7 +93,7 @@ let products = [
       {
         id: 1,
         user: "Ahmad",
-        rating: 4.0,
+        rating: 4.4,
         title: "Good Product",
         comments: "It is a very good product ....",
         date: "06-02-2021",
@@ -111,7 +111,7 @@ let products = [
       {
         id: 3,
         user: "Ali",
-        rating: 4.5,
+        rating: 4.1,
         title: "Great Bike",
         comments: "Ali: Fantastic experience riding it!",
         date: "04-02-2021",
@@ -133,7 +133,7 @@ let products = [
       {
         id: 1,
         user: "Sara",
-        rating: 4.5,
+        rating: 1.5,
         title: "Great Laptop",
         comments: "Sara: Works perfectly for my needs.",
         date: "08-02-2021",
@@ -142,7 +142,7 @@ let products = [
       {
         id: 2,
         user: "Owais",
-        rating: 4.0,
+        rating: 2.0,
         title: "Good Performance",
         comments: "Owais: Solid performance and battery life.",
         date: "07-02-2021",
@@ -151,7 +151,7 @@ let products = [
       {
         id: 3,
         user: "Fatima",
-        rating: 5.0,
+        rating: 3.0,
         title: "Best Purchase",
         comments: "Fatima: Highly recommend!",
         date: "06-02-2021",
@@ -173,7 +173,7 @@ let products = [
       {
         id: 1,
         user: "Muneeb",
-        rating: 4.0,
+        rating: 4.4,
         title: "Good Smartwatch",
         comments: "Muneeb: Great features for the price.",
         date: "09-02-2021",
@@ -191,7 +191,7 @@ let products = [
       {
         id: 3,
         user: "Ali",
-        rating: 4.8,
+        rating: 4.9,
         title: "Awesome",
         comments: "Ali: Best smartwatch I've owned!",
         date: "07-02-2021",
@@ -222,7 +222,7 @@ let products = [
       {
         id: 2,
         user: "Tariq",
-        rating: 4.0,
+        rating: 4.8,
         title: "Good for the Price",
         comments: "Tariq: Comfortable and decent sound.",
         date: "09-02-2021",
@@ -289,12 +289,68 @@ let products = [
 // Exercise 03:
 // Find the product with the highest average review rating.
 // Example: { title: 'Headphones', averageRating: 4.7 }
-function sum (a,b){
-  return a + b;
+function productWithHeightAveRating (products){
+  let maxAverageRatings = 0;
+  let maxAverageItem;
+  for(let i =0; i < products.length; i++){
+    let sum = 0;
+    let average = null;
+
+    for(let j=0; j < products[i].reviews.length; j++){
+      sum += products[i].reviews[j].rating;
+    
+     }
+    average = sum / products[i].reviews.length;
+    if(maxAverageRatings < average){
+      maxAverageRatings = average;
+      maxAverageItem = {
+        "title" : products[i].title,
+        "maxAverage" : average
+      }
+  
+    }
+
+
+  }
+  return maxAverageItem;
 }
-let result1 = sum(3,4)
-let result2 = sum(5,4)
-let result3 = sum(2,4)
-console.log(result1)
-console.log(result2)
-console.log(result3)
+let result = productWithHeightAveRating(products);
+console.log(result)
+
+// Exercise 4:
+// List the colors available for the product with the most reviews.
+// Example: [ 'black', 'silver', 'gold' ]
+
+// Exercise 5:
+// Calculate the total number of unique users who have left reviews across all products.
+// Example: 6
+
+// Exercise 6:
+// Group reviews by users. Each user should have an array of reviews they have written, sorted by date (newest first).
+// Example: { 'Ahmad': [ review1, review2 ], 'Ali': [ review1 ] }
+
+// Exercise 7:
+// Find the product(s) with the highest total stock (sum of quantities of all variations).
+// Example: [ { title: 'Headphones', totalQuantity: 50 } ]
+
+// Exercise 8:
+// Get all products where at least 80% of reviews have a rating of 4.5 or higher.
+// Example: [ { title: 'Smartwatch' }, { title: 'Laptop' } ]
+
+// Exercise 9:
+// Find the product with the largest price range between its cheapest and most expensive variation.
+// Example: { title: 'Smartwatch', priceRange: 3000 }
+
+// Exercise 10 :
+// Calculate the total revenue that could be generated if all products were sold at their listed prices.
+// _Example: sum of all (price * quantity) for each variation of all products.
+
+// function sum (a,b){
+//   return a + b;
+// }
+// let result1 = sum(3,4)
+// let result2 = sum(5,4)
+// let result3 = sum(2,4)
+// console.log(result1)
+// console.log(result2)
+// console.log(result3)
