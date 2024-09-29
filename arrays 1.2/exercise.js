@@ -264,24 +264,37 @@ let products = [
 // Exercise 2:
 // Get all the product titles that have at least one variation with a quantity greater than 5.
 // Example: [ 'Sony LED 40 inch', 'Mobile' ]
-function variationsWithQuantityFive (products){
-  let titlesOfProductsQuantityFive = [];
+// function variationsWithQuantityFive (products){
+//   let titlesOfProductsQuantityFive = [];
 
-  for(let i = 0; i < products.length; i++){
-    for(let j= 0; j < products[i].variations.length; j++){
-      if(products[i].variations[j].quantity >= 5){
-       let title = products[i].title;
-       console.log(title)
-       if(titlesOfProductsQuantityFive.indexOf(title)=== -1){
+//   for(let i = 0; i < products.length; i++){
+//     for(let j= 0; j < products[i].variations.length; j++){
+//       if(products[i].variations[j].quantity >= 5){
+//        let title = products[i].title;
+//        console.log(title)
+//        if(titlesOfProductsQuantityFive.indexOf(title)=== -1){
         
-         titlesOfProductsQuantityFive.push(products[i].title)
-       }
+//          titlesOfProductsQuantityFive.push(products[i].title)
+//        }
         
-      }
+//       }
 
-    }
-  }
-  return titlesOfProductsQuantityFive;
+//     }
+//   }
+//   return titlesOfProductsQuantityFive;
+// }
+
+// console.log(variationsWithQuantityFive(products));
+
+// Exercise 03:
+// Find the product with the highest average review rating.
+// Example: { title: 'Headphones', averageRating: 4.7 }
+function sum (a,b){
+  return a + b;
 }
-
-console.log(variationsWithQuantityFive(products));
+let result1 = sum(3,4)
+let result2 = sum(5,4)
+let result3 = sum(2,4)
+console.log(result1)
+console.log(result2)
+console.log(result3)
