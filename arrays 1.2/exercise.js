@@ -241,40 +241,9 @@ let products = [
   },
 ];
 
-// Exercise 1
-// Get all product titles and display them in array format.
-// Example: ['Sony LED 40 inch', 'Mobile', 'Bike']
-// Try with function or without function
 
-// Exercise 2
-// Get all the unique colors from the product variations.
-// Example: ['black', 'red', 'silver']
-// Try with function or without function
 
-// Exercise 3
-// Get the total quantity of all products.
-// Example: 23
-// Try with function or without function
-
-// Exercise 4
-// Get all product reviews where the status is true.
-// Example: [{ review1 }, { review3 }, ...]
-// Try with function or without function
-
-// Exercise 5
-// Find the most expensive variation across all products.
-// Example: { color: 'silver', price: 55000 }
-// Try with function or without function
-
-// Exercise 6
-// Get the average rating of all reviews.
-// Example: 4.2
-
-// Exercise 7
-// find a Product by id if not found return empty object
-// Example: {...}
-
-// Exercise 8:
+// Exercise 1:
 // Get all the variations where the price is greater than 50000.
 // Example: [ { color: 'red', price: 52000 }, { color: 'silver', price: 55000 } ]
 
