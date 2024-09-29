@@ -83,7 +83,7 @@ let products = [
     id: 103,
     title: "Bike",
     variations: [
-      { id: 1, color: "black", price: 55000, quantity: 5 },
+      { id: 1, color: "black", price: 55000, quantity: 3 },
       { id: 2, color: "red", price: 50000, quantity: 1 },
       { id: 3, color: "blue", price: 58000, quantity: 4 },
       { id: 4, color: "green", price: 57000, quantity: 2 },
@@ -203,11 +203,11 @@ let products = [
     id: 106,
     title: "Headphones",
     variations: [
-      { id: 1, color: "black", price: 3000, quantity: 15 },
-      { id: 2, color: "white", price: 3500, quantity: 10 },
-      { id: 3, color: "red", price: 3200, quantity: 5 },
-      { id: 4, color: "blue", price: 3400, quantity: 8 },
-      { id: 5, color: "green", price: 3100, quantity: 12 },
+      { id: 1, color: "black", price: 3000, quantity: 4 },
+      { id: 2, color: "white", price: 3500, quantity: 1 },
+      { id: 3, color: "red", price: 3200, quantity: 2 },
+      { id: 4, color: "blue", price: 3400, quantity: 3 },
+      { id: 5, color: "green", price: 3100, quantity: 0 },
     ],
     reviews: [
       {
@@ -247,17 +247,41 @@ let products = [
 // Get all the variations where the price is greater than 50000.
 // Example: [ { color: 'red', price: 52000 }, { color: 'silver', price: 55000 } ]
 
-function getAllItemsWithPriceGreater50k(products) {
-  for (let i = 0; i < products.length; i++) {
-    let pricePlus50k = [];
-    let miniPrice = 5000;
-    // debugger
-    for (let j = 0; j < products[i].variations.length; j++) {
-      if (products[i].variations[j].price >= miniPrice) {
-        pricePlus50k.push(products[i].variations[j]);
+// function getAllItemsWithPriceGreater50k(products) {
+//   for (let i = 0; i < products.length; i++) {
+//     let pricePlus50k = [];
+//     let miniPrice = 5000;
+//     for (let j = 0; j < products[i].variations.length; j++) {
+//       if (products[i].variations[j].price >= miniPrice) {
+//         pricePlus50k.push(products[i].variations[j]);
+//       }
+//     }
+//     return pricePlus50k;
+//   }
+// }
+// console.log(getAllItemsWithPriceGreater50k(products));
+
+// Exercise 2:
+// Get all the product titles that have at least one variation with a quantity greater than 5.
+// Example: [ 'Sony LED 40 inch', 'Mobile' ]
+function variationsWithQuantityFive (products){
+  let titlesOfProductsQuantityFive = [];
+
+  for(let i = 0; i < products.length; i++){
+    for(let j= 0; j < products[i].variations.length; j++){
+      if(products[i].variations[j].quantity >= 5){
+       let title = products[i].title;
+       console.log(title)
+       if(titlesOfProductsQuantityFive.indexOf(title)=== -1){
+        
+         titlesOfProductsQuantityFive.push(products[i].title)
+       }
+        
       }
+
     }
-    return pricePlus50k;
   }
+  return titlesOfProductsQuantityFive;
 }
-console.log(getAllItemsWithPriceGreater50k(products));
+
+console.log(variationsWithQuantityFive(products));
