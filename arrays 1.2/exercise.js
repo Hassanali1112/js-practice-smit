@@ -470,19 +470,21 @@ function getProductWithHighestPriceRange(products) {
   };
   return productWithHighestPriceRange
 }
-let priceRange = getProductWithHighestPriceRange(products)
-console.log(priceRange)
+// let priceRange = getProductWithHighestPriceRange(products)
+// console.log(priceRange)
 
 // Exercise 10 :
 // Calculate the total revenue that could be generated if all products were sold at their listed prices.
 // _Example: sum of all (price * quantity) for each variation of all products.
+function getNetRevenue(products){
+  let totalRevenue = 0;
+  for(let i=0; i < products.length; i++){
+    for(let j=0; j < products[i].variations.length; j++){
+      totalRevenue += products[i].variations[j].price * products[i].variations[j].quantity;
+    }
+  }
+  return totalRevenue;
+}
+let netRevenue = getNetRevenue(products);
+console.log(netRevenue);
 
-// function sum (a,b){
-//   return a + b;
-// }
-// let result1 = sum(3,4)
-// let result2 = sum(5,4)
-// let result3 = sum(2,4)
-// console.log(result1)
-// console.log(result2)
-// console.log(result3)
