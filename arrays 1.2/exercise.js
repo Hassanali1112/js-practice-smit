@@ -83,7 +83,7 @@ let products = [
     id: 103,
     title: "Bike",
     variations: [
-      { id: 1, color: "black", price: 55000, quantity: 3 },
+      { id: 1, color: "black", price: 45000, quantity: 3 },
       { id: 2, color: "red", price: 50000, quantity: 1 },
       { id: 3, color: "blue", price: 58000, quantity: 4 },
       { id: 4, color: "green", price: 57000, quantity: 2 },
@@ -404,7 +404,7 @@ let products = [
 //     if (sum > highestStock) {
 //       highestStock = sum;
 //       product = products[i];
-      
+
 //     }
 //   }
 //   productWithHighestStock.push({
@@ -420,28 +420,58 @@ let products = [
 // Get all products where at least 80% of reviews have a rating of 4.5 or higher.
 // Example: [ { title: 'Smartwatch' }, { title: 'Laptop' } ]
 
-function getAllProductWithHighRatings(products){
-  let productsWithHighRatings = [];
-  for(let i=0; i < products.length; i++){
-    let count = 0;
-    for(let j=0; j < products[i].reviews.length; j++){
-      if(products[i].reviews[j].rating >= 4.5){
-        count++;
-      }
-      if(count / products[i].reviews.length > 0.8){
-        productsWithHighRatings.push(products[i])
-      }
-    }
-  }
-  return productsWithHighRatings;
-}
-
-let highRatingsProducts = getAllProductWithHighRatings(products);
-console.log(highRatingsProducts);
+// function getAllProductWithHighRatings(products){
+//   let productsWithHighRatings = [];
+//   for(let i=0; i < products.length; i++){
+//     let count = 0;
+//     for(let j=0; j < products[i].reviews.length; j++){
+//       if(products[i].reviews[j].rating >= 4.5){
+//         count++;
+//       }
+//       if(count / products[i].reviews.length > 0.8){
+//         productsWithHighRatings.push(products[i])
+//       }
+//     }
+//   }
+//   return productsWithHighRatings;
+// }
+// let highRatingsProducts = getAllProductWithHighRatings(products);
+// console.log(highRatingsProducts);
 
 // Exercise 9:
 // Find the product with the largest price range between its cheapest and most expensive variation.
 // Example: { title: 'Smartwatch', priceRange: 3000 }
+
+function getProductWithHighestPriceRange(products) {
+  let productWithHighestPriceRange = null;
+  let highestPriceRange = 0;
+  let priceRange;
+  let product;
+  for (let i = 0; i < products.length; i++) {
+    minPrice = products[i].variations[0].price;
+    maxPrice = products[i].variations[0].price;
+    for (let j = 0; j < products[i].variations.length; j++) {
+      if (products[i].variations[j].price < minPrice) {
+        minPrice = products[i].variations[j].pricep;
+      }
+      if (products[i].variations[j].price > maxPrice) {
+        maxPrice = products[i].variations[j].price;
+      }
+      priceRange = maxPrice - minPrice;
+    }
+    if (priceRange > highestPriceRange) {
+      highestPriceRange = priceRange;
+      product = products[i];
+    }
+  }
+  productWithHighestPriceRange = {
+    title: product.title,
+    priceRange: highestPriceRange,
+  };
+  return productWithHighestPriceRange
+}
+let priceRange = getProductWithHighestPriceRange(products)
+console.log(priceRange)
 
 // Exercise 10 :
 // Calculate the total revenue that could be generated if all products were sold at their listed prices.
