@@ -336,15 +336,13 @@ function productWithMostReviews(products) {
       if (products[i].reviews.length > productLength) {
         productLength = products[i].reviews.length;
         item = products[i];
-        console.log(productLength);
-        console.log(item.length);
-        // debugger;
-        for (let k = 0; k < item.length; k++) {
-          colorsOFMostReviewsProduct.push(item.variations[k].color);
-        }
       }
     }
   }
+  for(let k=0; k < item.variations.length; k++){
+    colorsOFMostReviewsProduct.push(item.variations[k].color)
+  }
+
   return colorsOFMostReviewsProduct;
 }
 let allColorsOfMostReviewedProduct = productWithMostReviews(products);
