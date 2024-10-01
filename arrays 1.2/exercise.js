@@ -370,29 +370,51 @@ let products = [
 // Exercise 6:
 // Group reviews by users. Each user should have an array of reviews they have written, sorted by date (newest first).
 // Example: { 'Ahmad': [ review1, review2 ], 'Ali': [ review1 ] }
-function groupReviewsByUser(products) {
-  let groupedReviews = {};
- for(let i = 0; i < products.length; i++){
-  for(let j=0; j < products[i].reviews.length; j++){
-    let user = products[i].reviews[j].user;
-    if(!groupedReviews[user]){
-      groupedReviews[user] = [];
-    }
-    groupedReviews[user].push(products[i].reviews[j])
-  }
-  for(let user in groupedReviews){
-    groupedReviews[user].sort((a,b) => new Date(b.date) - new Date(a.date));
-  }
- }
-  return groupedReviews;
-}
-let result = groupReviewsByUser(products)
-console.log(result)
-
+// function groupReviewsByUser(products) {
+//   let groupedReviews = {};
+//  for(let i = 0; i < products.length; i++){
+//   for(let j=0; j < products[i].reviews.length; j++){
+//     let user = products[i].reviews[j].user;
+//     if(!groupedReviews[user]){
+//       groupedReviews[user] = [];
+//     }
+//     groupedReviews[user].push(products[i].reviews[j])
+//   }
+//   for(let user in groupedReviews){
+//     groupedReviews[user].sort((a,b) => new Date(b.date) - new Date(a.date));
+//   }
+//  }
+//   return groupedReviews;
+// }
+// let result = groupReviewsByUser(products)
+// console.log(result)
 
 // Exercise 7:
 // Find the product(s) with the highest total stock (sum of quantities of all variations).
 // Example: [ { title: 'Headphones', totalQuantity: 50 } ]
+function getProductWithHighestStock(products) {
+  let productWithHighestStock = [];
+  let highestStock = 0;
+  let product;
+  for (let i = 0; i < products.length; i++) {
+    let sum = 0;
+    for (let j = 0; j < products[i].variations.length; j++) {
+      sum += products[i].variations[j].quantity;
+    }
+    if (sum > highestStock) {
+      highestStock = sum;
+      product = products[i];
+      
+    }
+  }
+  productWithHighestStock.push({
+    "title": product.title,
+    "quantity": highestStock,
+  });
+  return productWithHighestStock
+}
+let higestStockProduct = getProductWithHighestStock(products);
+console.log(higestStockProduct)
 
 // Exercise 8:
 // Get all products where at least 80% of reviews have a rating of 4.5 or higher.
