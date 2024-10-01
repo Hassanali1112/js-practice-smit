@@ -16,7 +16,7 @@ let products = [
         rating: 4.6,
         title: "Good Product",
         comments: "It is a very good product ....",
-        date: "06-02-2021",
+        date: "30-02-2021",
         status: true,
       },
       {
@@ -54,9 +54,9 @@ let products = [
         id: 1,
         user: "Ahmad",
         rating: 3.4,
-        title: "Good Product",
+        title: "nice",
         comments: "It is a very good product ....",
-        date: "06-02-2021",
+        date: "20-02-2021",
         status: true,
       },
       {
@@ -65,7 +65,7 @@ let products = [
         rating: 2.5,
         title: "Very Good Product",
         comments: "Zubair: It is a very good product ....",
-        date: "05-02-2021",
+        date: "03-02-2021",
         status: false,
       },
       {
@@ -74,7 +74,7 @@ let products = [
         rating: 3.0,
         title: "Best Mobile",
         comments: "Ali: Perfect for my needs!",
-        date: "04-02-2021",
+        date: "09-02-2021",
         status: true,
       },
     ],
@@ -105,7 +105,7 @@ let products = [
         rating: 3.0,
         title: "Decent Product",
         comments: "Zubair: It's okay, but could be better.",
-        date: "05-02-2021",
+        date: "15-02-2021",
         status: false,
       },
       {
@@ -114,7 +114,7 @@ let products = [
         rating: 4.1,
         title: "Great Bike",
         comments: "Ali: Fantastic experience riding it!",
-        date: "04-02-2021",
+        date: "11-02-2021",
         status: true,
       },
     ],
@@ -352,24 +352,43 @@ let products = [
 // Calculate the total number of unique users who have left reviews across all products.
 // Example: 6
 
-function getUniqueUsers (products){
-  let uniqueUsers = [];
-  for(let i=0; i < products.length; i++){
-    for(let j=0; j < products[i].reviews.length; j++){
-      let user = products[i].reviews[j].user;
-      if( uniqueUsers.indexOf(user) === -1){
-        uniqueUsers.push(user)
-      }
-    }
-  }
-  return uniqueUsers;
-}
-let users = getUniqueUsers(products)
-console.log(users)
+// function getUniqueUsers (products){
+//   let uniqueUsers = [];
+//   for(let i=0; i < products.length; i++){
+//     for(let j=0; j < products[i].reviews.length; j++){
+//       let user = products[i].reviews[j].user;
+//       if( uniqueUsers.indexOf(user) === -1){
+//         uniqueUsers.push(user)
+//       }
+//     }
+//   }
+//   return uniqueUsers;
+// }
+// let users = getUniqueUsers(products)
+// console.log(users)
 
 // Exercise 6:
 // Group reviews by users. Each user should have an array of reviews they have written, sorted by date (newest first).
 // Example: { 'Ahmad': [ review1, review2 ], 'Ali': [ review1 ] }
+function groupReviewsByUser(products) {
+  let groupedReviews = {};
+ for(let i = 0; i < products.length; i++){
+  for(let j=0; j < products[i].reviews.length; j++){
+    let user = products[i].reviews[j].user;
+    if(!groupedReviews[user]){
+      groupedReviews[user] = [];
+    }
+    groupedReviews[user].push(products[i].reviews[j])
+  }
+  for(let user in groupedReviews){
+    groupedReviews[user].sort((a,b) => new Date(b.date) - new Date(a.date));
+  }
+ }
+  return groupedReviews;
+}
+let result = groupReviewsByUser(products)
+console.log(result)
+
 
 // Exercise 7:
 // Find the product(s) with the highest total stock (sum of quantities of all variations).
