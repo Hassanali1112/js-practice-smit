@@ -327,30 +327,45 @@ let products = [
 // List the colors available for the product with the most reviews.
 // Example: [ 'black', 'silver', 'gold' ]
 
-function productWithMostReviews(products) {
-  let colorsOFMostReviewsProduct = [];
-  let item = null;
-  let productLength = 0;
-  for (let i = 0; i < products.length; i++) {
-    for (let j = 0; j < products[i].reviews.length; j++) {
-      if (products[i].reviews.length > productLength) {
-        productLength = products[i].reviews.length;
-        item = products[i];
-      }
-    }
-  }
-  for(let k=0; k < item.variations.length; k++){
-    colorsOFMostReviewsProduct.push(item.variations[k].color)
-  }
+// function productWithMostReviews(products) {
+//   let colorsOFMostReviewsProduct = [];
+//   let item = null;
+//   let productLength = 0;
+//   for (let i = 0; i < products.length; i++) {
+//     for (let j = 0; j < products[i].reviews.length; j++) {
+//       if (products[i].reviews.length > productLength) {
+//         productLength = products[i].reviews.length;
+//         item = products[i];
+//       }
+//     }
+//   }
+//   for(let k=0; k < item.variations.length; k++){
+//     colorsOFMostReviewsProduct.push(item.variations[k].color)
+//   }
 
-  return colorsOFMostReviewsProduct;
-}
-let allColorsOfMostReviewedProduct = productWithMostReviews(products);
-console.log(allColorsOfMostReviewedProduct);
+//   return colorsOFMostReviewsProduct;
+// }
+// let allColorsOfMostReviewedProduct = productWithMostReviews(products);
+// console.log(allColorsOfMostReviewedProduct);
 
 // Exercise 5:
 // Calculate the total number of unique users who have left reviews across all products.
 // Example: 6
+
+function getUniqueUsers (products){
+  let uniqueUsers = [];
+  for(let i=0; i < products.length; i++){
+    for(let j=0; j < products[i].reviews.length; j++){
+      let user = products[i].reviews[j].user;
+      if( uniqueUsers.indexOf(user) === -1){
+        uniqueUsers.push(user)
+      }
+    }
+  }
+  return uniqueUsers;
+}
+let users = getUniqueUsers(products)
+console.log(users)
 
 // Exercise 6:
 // Group reviews by users. Each user should have an array of reviews they have written, sorted by date (newest first).
