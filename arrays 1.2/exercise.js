@@ -22,7 +22,7 @@ let products = [
       {
         id: 2,
         user: "Zubair",
-        rating: 4.5,
+        rating: 4.4,
         title: "Very Good Product",
         comments: "Zubair: It is a very good product ....",
         date: "05-02-2021",
@@ -31,7 +31,7 @@ let products = [
       {
         id: 3,
         user: "Ali",
-        rating: 3.9,
+        rating: 4.9,
         title: "Excellent Product",
         comments: "Ali: I absolutely love it!",
         date: "04-02-2021",
@@ -93,7 +93,7 @@ let products = [
       {
         id: 1,
         user: "Ahmad",
-        rating: 4.4,
+        rating: 4.5,
         title: "Good Product",
         comments: "It is a very good product ....",
         date: "06-02-2021",
@@ -102,7 +102,7 @@ let products = [
       {
         id: 2,
         user: "Zubair",
-        rating: 3.0,
+        rating: 4.7,
         title: "Decent Product",
         comments: "Zubair: It's okay, but could be better.",
         date: "15-02-2021",
@@ -111,7 +111,7 @@ let products = [
       {
         id: 3,
         user: "Ali",
-        rating: 4.1,
+        rating: 4.8,
         title: "Great Bike",
         comments: "Ali: Fantastic experience riding it!",
         date: "11-02-2021",
@@ -173,7 +173,7 @@ let products = [
       {
         id: 1,
         user: "Muneeb",
-        rating: 4.4,
+        rating: 4.7,
         title: "Good Smartwatch",
         comments: "Muneeb: Great features for the price.",
         date: "09-02-2021",
@@ -191,7 +191,7 @@ let products = [
       {
         id: 3,
         user: "Ali",
-        rating: 4.9,
+        rating: 4.5,
         title: "Awesome",
         comments: "Ali: Best smartwatch I've owned!",
         date: "07-02-2021",
@@ -222,7 +222,7 @@ let products = [
       {
         id: 1,
         user: "Samira",
-        rating: 4.2,
+        rating: 4.1,
         title: "Great Sound",
         comments: "Samira: The sound quality is impressive.",
         date: "10-02-2021",
@@ -392,33 +392,52 @@ let products = [
 // Exercise 7:
 // Find the product(s) with the highest total stock (sum of quantities of all variations).
 // Example: [ { title: 'Headphones', totalQuantity: 50 } ]
-function getProductWithHighestStock(products) {
-  let productWithHighestStock = [];
-  let highestStock = 0;
-  let product;
-  for (let i = 0; i < products.length; i++) {
-    let sum = 0;
-    for (let j = 0; j < products[i].variations.length; j++) {
-      sum += products[i].variations[j].quantity;
-    }
-    if (sum > highestStock) {
-      highestStock = sum;
-      product = products[i];
+// function getProductWithHighestStock(products) {
+//   let productWithHighestStock = [];
+//   let highestStock = 0;
+//   let product;
+//   for (let i = 0; i < products.length; i++) {
+//     let sum = 0;
+//     for (let j = 0; j < products[i].variations.length; j++) {
+//       sum += products[i].variations[j].quantity;
+//     }
+//     if (sum > highestStock) {
+//       highestStock = sum;
+//       product = products[i];
       
-    }
-  }
-  productWithHighestStock.push({
-    "title": product.title,
-    "quantity": highestStock,
-  });
-  return productWithHighestStock
-}
-let higestStockProduct = getProductWithHighestStock(products);
-console.log(higestStockProduct)
+//     }
+//   }
+//   productWithHighestStock.push({
+//     "title": product.title,
+//     "quantity": highestStock,
+//   });
+//   return productWithHighestStock
+// }
+// let higestStockProduct = getProductWithHighestStock(products);
+// console.log(higestStockProduct)
 
 // Exercise 8:
 // Get all products where at least 80% of reviews have a rating of 4.5 or higher.
 // Example: [ { title: 'Smartwatch' }, { title: 'Laptop' } ]
+
+function getAllProductWithHighRatings(products){
+  let productsWithHighRatings = [];
+  for(let i=0; i < products.length; i++){
+    let count = 0;
+    for(let j=0; j < products[i].reviews.length; j++){
+      if(products[i].reviews[j].rating >= 4.5){
+        count++;
+      }
+      if(count / products[i].reviews.length > 0.8){
+        productsWithHighRatings.push(products[i])
+      }
+    }
+  }
+  return productsWithHighRatings;
+}
+
+let highRatingsProducts = getAllProductWithHighRatings(products);
+console.log(highRatingsProducts);
 
 // Exercise 9:
 // Find the product with the largest price range between its cheapest and most expensive variation.
