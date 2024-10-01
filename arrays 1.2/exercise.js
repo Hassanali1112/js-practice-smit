@@ -254,189 +254,189 @@ let products = [
 // Get all the variations where the price is greater than 50000.
 // Example: [ { color: 'red', price: 52000 }, { color: 'silver', price: 55000 } ]
 
-// function getAllItemsWithPriceGreater50k(products) {
-//   for (let i = 0; i < products.length; i++) {
-//     let pricePlus50k = [];
-//     let miniPrice = 5000;
-//     for (let j = 0; j < products[i].variations.length; j++) {
-//       if (products[i].variations[j].price >= miniPrice) {
-//         pricePlus50k.push(products[i].variations[j]);
-//       }
-//     }
-//     return pricePlus50k;
-//   }
-// }
-// console.log(getAllItemsWithPriceGreater50k(products));
+function getAllItemsWithPriceGreater50k(products) {
+  for (let i = 0; i < products.length; i++) {
+    let pricePlus50k = [];
+    let miniPrice = 50000;
+    for (let j = 0; j < products[i].variations.length; j++) {
+      if (products[i].variations[j].price > miniPrice) {
+        pricePlus50k.push(products[i].variations[j]);
+      }
+    }
+  }
+  return pricePlus50k;
+}
+console.log(getAllItemsWithPriceGreater50k(products));
 
 // Exercise 2:
 // Get all the product titles that have at least one variation with a quantity greater than 5.
 // Example: [ 'Sony LED 40 inch', 'Mobile' ]
-// function variationsWithQuantityFive (products){
-//   let titlesOfProductsQuantityFive = [];
+function variationsWithQuantityFive (products){
+  let titlesOfProductsQuantityFive = [];
+  for(let i = 0; i < products.length; i++){
+    for(let j= 0; j < products[i].variations.length; j++){
+      if(products[i].variations[j].quantity >= 5){
+       let title = products[i].title;
+       if(titlesOfProductsQuantityFive.indexOf(title)=== -1){
 
-//   for(let i = 0; i < products.length; i++){
-//     for(let j= 0; j < products[i].variations.length; j++){
-//       if(products[i].variations[j].quantity >= 5){
-//        let title = products[i].title;
-//        console.log(title)
-//        if(titlesOfProductsQuantityFive.indexOf(title)=== -1){
+         titlesOfProductsQuantityFive.push(products[i].title)
+       }
 
-//          titlesOfProductsQuantityFive.push(products[i].title)
-//        }
+      }
 
-//       }
+    }
+  }
+  return titlesOfProductsQuantityFive;
+}
 
-//     }
-//   }
-//   return titlesOfProductsQuantityFive;
-// }
-
-// console.log(variationsWithQuantityFive(products));
+console.log(variationsWithQuantityFive(products));
 
 // Exercise 03:
 // Find the product with the highest average review rating.
 // Example: { title: 'Headphones', averageRating: 4.7 }
-// function productWithHeightAveRating (products){
-//   let maxAverageRatings = 0;
-//   let maxAverageItem;
-//   for(let i =0; i < products.length; i++){
-//     let sum = 0;
-//     let average = null;
+function productWithHeightAveRating(products) {
+  let maxAverageRatings = 0;
+  let maxAverageItem;
+  for (let i = 0; i < products.length; i++) {
+    let sum = 0;
+    let average = null;
 
-//     for(let j=0; j < products[i].reviews.length; j++){
-//       sum += products[i].reviews[j].rating;
-
-//      }
-//     average = sum / products[i].reviews.length;
-//     if(maxAverageRatings < average){
-//       maxAverageRatings = average;
-//       maxAverageItem = {
-//         "title" : products[i].title,
-//         "maxAverage" : average
-//       }
-
-//     }
-
-//   }
-//   return maxAverageItem;
-// }
-// let result = productWithHeightAveRating(products);
-// console.log(result)
+    for (let j = 0; j < products[i].reviews.length; j++) {
+      sum += products[i].reviews[j].rating;
+    }
+    average = sum / products[i].reviews.length;
+    if (maxAverageRatings < average) {
+      maxAverageRatings = average;
+      maxAverageItem = {
+        title: products[i].title,
+        maxAverage: average,
+      };
+    }
+  }
+  return maxAverageItem;
+}
+let resultRatings = productWithHeightAveRating(products);
+console.log(resultRatings);
 
 // Exercise 4:
 // List the colors available for the product with the most reviews.
 // Example: [ 'black', 'silver', 'gold' ]
 
-// function productWithMostReviews(products) {
-//   let colorsOFMostReviewsProduct = [];
-//   let item = null;
-//   let productLength = 0;
-//   for (let i = 0; i < products.length; i++) {
-//     for (let j = 0; j < products[i].reviews.length; j++) {
-//       if (products[i].reviews.length > productLength) {
-//         productLength = products[i].reviews.length;
-//         item = products[i];
-//       }
-//     }
-//   }
-//   for(let k=0; k < item.variations.length; k++){
-//     colorsOFMostReviewsProduct.push(item.variations[k].color)
-//   }
+function productWithMostReviews(products) {
+  let colorsOFMostReviewsProduct = [];
+  let item = null;
+  let productLength = 0;
+  for (let i = 0; i < products.length; i++) {
+    for (let j = 0; j < products[i].reviews.length; j++) {
+      if (products[i].reviews.length > productLength) {
+        productLength = products[i].reviews.length;
+        item = products[i];
+      }
+    }
+  }
+  for (let k = 0; k < item.variations.length; k++) {
+    colorsOFMostReviewsProduct.push(item.variations[k].color);
+  }
 
-//   return colorsOFMostReviewsProduct;
-// }
-// let allColorsOfMostReviewedProduct = productWithMostReviews(products);
-// console.log(allColorsOfMostReviewedProduct);
+  return colorsOFMostReviewsProduct;
+}
+let allColorsOfMostReviewedProduct = productWithMostReviews(products);
+console.log(allColorsOfMostReviewedProduct);
 
 // Exercise 5:
 // Calculate the total number of unique users who have left reviews across all products.
 // Example: 6
 
-// function getUniqueUsers (products){
-//   let uniqueUsers = [];
-//   for(let i=0; i < products.length; i++){
-//     for(let j=0; j < products[i].reviews.length; j++){
-//       let user = products[i].reviews[j].user;
-//       if( uniqueUsers.indexOf(user) === -1){
-//         uniqueUsers.push(user)
-//       }
-//     }
-//   }
-//   return uniqueUsers;
-// }
-// let users = getUniqueUsers(products)
-// console.log(users)
+function getUniqueUsers(products) {
+  let uniqueUsers = [];
+  for (let i = 0; i < products.length; i++) {
+    for (let j = 0; j < products[i].reviews.length; j++) {
+      let user = products[i].reviews[j].user;
+      if (uniqueUsers.indexOf(user) === -1) {
+        uniqueUsers.push(user);
+      }
+    }
+  }
+  return uniqueUsers.length;
+}
+let users = getUniqueUsers(products);
+console.log(users);
 
 // Exercise 6:
 // Group reviews by users. Each user should have an array of reviews they have written, sorted by date (newest first).
 // Example: { 'Ahmad': [ review1, review2 ], 'Ali': [ review1 ] }
-// function groupReviewsByUser(products) {
-//   let groupedReviews = {};
-//  for(let i = 0; i < products.length; i++){
-//   for(let j=0; j < products[i].reviews.length; j++){
-//     let user = products[i].reviews[j].user;
-//     if(!groupedReviews[user]){
-//       groupedReviews[user] = [];
-//     }
-//     groupedReviews[user].push(products[i].reviews[j])
-//   }
-//   for(let user in groupedReviews){
-//     groupedReviews[user].sort((a,b) => new Date(b.date) - new Date(a.date));
-//   }
-//  }
-//   return groupedReviews;
-// }
-// let result = groupReviewsByUser(products)
-// console.log(result)
+function groupReviewsByUser(products) {
+  let groupedReviews = {};
+  for (let i = 0; i < products.length; i++) {
+    for (let j = 0; j < products[i].reviews.length; j++) {
+      let user = products[i].reviews[j].user;
+      if (!groupedReviews[user]) {
+        groupedReviews[user] = [];
+      }
+      groupedReviews[user].push(products[i].reviews[j]);
+    }
+  }
+  for (let user in groupedReviews) {
+    groupedReviews[user].sort(
+      (a, b) =>
+        new Date(b.date.split("-").reverse()) -
+        new Date(a.date.split("-").reverse())
+    );
+  }
+  return groupedReviews;
+}
+console.log(groupReviewsByUser(products));
+
+let result = groupReviewsByUser(products);
+console.log(result);
 
 // Exercise 7:
 // Find the product(s) with the highest total stock (sum of quantities of all variations).
 // Example: [ { title: 'Headphones', totalQuantity: 50 } ]
-// function getProductWithHighestStock(products) {
-//   let productWithHighestStock = [];
-//   let highestStock = 0;
-//   let product;
-//   for (let i = 0; i < products.length; i++) {
-//     let sum = 0;
-//     for (let j = 0; j < products[i].variations.length; j++) {
-//       sum += products[i].variations[j].quantity;
-//     }
-//     if (sum > highestStock) {
-//       highestStock = sum;
-//       product = products[i];
-
-//     }
-//   }
-//   productWithHighestStock.push({
-//     "title": product.title,
-//     "quantity": highestStock,
-//   });
-//   return productWithHighestStock
-// }
-// let higestStockProduct = getProductWithHighestStock(products);
-// console.log(higestStockProduct)
+function getProductWithHighestStock(products) {
+  let productWithHighestStock = [];
+  let highestStock = 0;
+  let product;
+  for (let i = 0; i < products.length; i++) {
+    let sum = 0;
+    for (let j = 0; j < products[i].variations.length; j++) {
+      sum += products[i].variations[j].quantity;
+    }
+    if (sum > highestStock) {
+      highestStock = sum;
+      product = products[i];
+    }
+  }
+  productWithHighestStock.push({
+    title: product.title,
+    quantity: highestStock,
+  });
+  return productWithHighestStock;
+}
+let higestStockProduct = getProductWithHighestStock(products);
+console.log(higestStockProduct);
 
 // Exercise 8:
 // Get all products where at least 80% of reviews have a rating of 4.5 or higher.
 // Example: [ { title: 'Smartwatch' }, { title: 'Laptop' } ]
 
-// function getAllProductWithHighRatings(products){
-//   let productsWithHighRatings = [];
-//   for(let i=0; i < products.length; i++){
-//     let count = 0;
-//     for(let j=0; j < products[i].reviews.length; j++){
-//       if(products[i].reviews[j].rating >= 4.5){
-//         count++;
-//       }
-//       if(count / products[i].reviews.length > 0.8){
-//         productsWithHighRatings.push(products[i])
-//       }
-//     }
-//   }
-//   return productsWithHighRatings;
-// }
-// let highRatingsProducts = getAllProductWithHighRatings(products);
-// console.log(highRatingsProducts);
+function getAllProductWithHighRatings(products) {
+  let productsWithHighRatings = [];
+  for (let i = 0; i < products.length; i++) {
+    let count = 0;
+    for (let j = 0; j < products[i].reviews.length; j++) {
+      if (products[i].reviews[j].rating >= 4.5) {
+        count++;
+      }
+    }
+    if (count / products[i].reviews.length >= 0.8) {
+      productsWithHighRatings.push(products[i]);
+    }
+  }
+  return productsWithHighRatings;
+}
+let highRatingsProducts = getAllProductWithHighRatings(products);
+console.log(highRatingsProducts);
 
 // Exercise 9:
 // Find the product with the largest price range between its cheapest and most expensive variation.
@@ -452,7 +452,7 @@ function getProductWithHighestPriceRange(products) {
     maxPrice = products[i].variations[0].price;
     for (let j = 0; j < products[i].variations.length; j++) {
       if (products[i].variations[j].price < minPrice) {
-        minPrice = products[i].variations[j].pricep;
+        minPrice = products[i].variations[j].price;
       }
       if (products[i].variations[j].price > maxPrice) {
         maxPrice = products[i].variations[j].price;
@@ -468,23 +468,23 @@ function getProductWithHighestPriceRange(products) {
     title: product.title,
     priceRange: highestPriceRange,
   };
-  return productWithHighestPriceRange
+  return productWithHighestPriceRange;
 }
-// let priceRange = getProductWithHighestPriceRange(products)
-// console.log(priceRange)
+let priceRange = getProductWithHighestPriceRange(products);
+console.log(priceRange);
 
 // Exercise 10 :
 // Calculate the total revenue that could be generated if all products were sold at their listed prices.
 // _Example: sum of all (price * quantity) for each variation of all products.
-function getNetRevenue(products){
+function getNetRevenue(products) {
   let totalRevenue = 0;
-  for(let i=0; i < products.length; i++){
-    for(let j=0; j < products[i].variations.length; j++){
-      totalRevenue += products[i].variations[j].price * products[i].variations[j].quantity;
+  for (let i = 0; i < products.length; i++) {
+    for (let j = 0; j < products[i].variations.length; j++) {
+      totalRevenue +=
+        products[i].variations[j].price * products[i].variations[j].quantity;
     }
   }
   return totalRevenue;
 }
 let netRevenue = getNetRevenue(products);
 console.log(netRevenue);
-
