@@ -545,7 +545,7 @@ function getAllProductWithHighRatings(products) {
   return productsWithHighRatings;
 }
 let highRatingsProducts = getAllProductWithHighRatings(products);
-console.log(highRatingsProducts);
+// console.log(highRatingsProducts);
 
 // Exercise 9:
 // Find the product with the largest price range between its cheapest and most expensive variation.
@@ -556,28 +556,49 @@ function getProductWithHighestPriceRange(products) {
   let highestPriceRange = 0;
   let priceRange;
   let product;
- 
-  for (let i = 0; i < products.length; i++) {
-    minPrice = products[i].variations[0].price;
-    maxPrice = products[i].variations[0].price;
-    for (let j = 0; j < products[i].variations.length; j++) {
-      if (products[i].variations[j].price < minPrice) {
-        minPrice = products[i].variations[j].price;
-      }
-      if (products[i].variations[j].price > maxPrice) {
-        maxPrice = products[i].variations[j].price;
-      }
-      priceRange = maxPrice - minPrice;
+ for(let i=0; i < products.length; i++){
+  for(let j=0; j < products[i].variations.length; j++){
+    let maxPrice = products[i].variations[0].price;
+    let minPrice = products[i].variations[0].price;
+    if(products[i].variations[j].price > maxPrice){
+      maxPrice = products[i].variations[j].price;
     }
-    if (priceRange > highestPriceRange) {
+    if(products[i].variations[j].price < minPrice){
+      minPrice = products[i].variations[j].price;
+    }
+    priceRange = maxPrice - minPrice;
+    if(priceRange > highestPriceRange){
       highestPriceRange = priceRange;
       product = products[i];
     }
   }
-  productWithHighestPriceRange = {
-    title: product.title,
-    priceRange: highestPriceRange,
-  };
+ }
+ 
+ productWithHighestPriceRange = {
+  "title" : product.title,
+  "priceRange" :highestPriceRange,
+ }
+  // for (let i = 0; i < products.length; i++) {
+  //   minPrice = products[i].variations[0].price;
+  //   maxPrice = products[i].variations[0].price;
+  //   for (let j = 0; j < products[i].variations.length; j++) {
+  //     if (products[i].variations[j].price < minPrice) {
+  //       minPrice = products[i].variations[j].price;
+  //     }
+  //     if (products[i].variations[j].price > maxPrice) {
+  //       maxPrice = products[i].variations[j].price;
+  //     }
+  //     priceRange = maxPrice - minPrice;
+  //   }
+  //   if (priceRange > highestPriceRange) {
+  //     highestPriceRange = priceRange;
+  //     product = products[i];
+  //   }
+  // }
+  // productWithHighestPriceRange = {
+  //   title: product.title,
+  //   priceRange: highestPriceRange,
+  // };
   return productWithHighestPriceRange;
 }
 let priceRange = getProductWithHighestPriceRange(products);
@@ -588,13 +609,19 @@ console.log(priceRange);
 // _Example: sum of all (price * quantity) for each variation of all products.
 function getNetRevenue(products) {
   let totalRevenue = 0;
-  for (let i = 0; i < products.length; i++) {
-    for (let j = 0; j < products[i].variations.length; j++) {
-      totalRevenue +=
-        products[i].variations[j].price * products[i].variations[j].quantity;
+  // for (let i = 0; i < products.length; i++) {
+  //   for (let j = 0; j < products[i].variations.length; j++) {
+  //     totalRevenue +=
+  //       products[i].variations[j].price * products[i].variations[j].quantity;
+  //   }
+  // }
+  for(let i=0; i < products.length; i++){
+    for(let j=0; j < products[i].variations.length; j++){
+      totalRevenue += products[i].variations[j].price * products[i].variations[j].quantity;
     }
   }
   return totalRevenue;
 }
 let netRevenue = getNetRevenue(products);
-// console.log(netRevenue);
+console.log(netRevenue);
+
