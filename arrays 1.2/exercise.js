@@ -255,17 +255,30 @@ let products = [
 // Example: [ { color: 'red', price: 52000 }, { color: 'silver', price: 55000 } ]
 
 function getAllItemsWithPriceGreater50k(products) {
-  for (let i = 0; i < products.length; i++) {
-    let pricePlus50k = [];
-    let miniPrice = 50000;
-    for (let j = 0; j < products[i].variations.length; j++) {
-      if (products[i].variations[j].price > miniPrice) {
-        pricePlus50k.push(products[i].variations[j]);
-      }
-    }
-  }
+  let pricePlus50k = [];
+  // for (let i = 0; i < products.length; i++) {
+  //   let miniPrice = 50000;
+  //   for (let j = 0; j < products[i].variations.length; j++) {
+  //     if (products[i].variations[j].price > miniPrice) {
+  //       pricePlus50k.push(products[i].variations[j]);
+  //     }
+  //   }
+  // }
+  // for(let i=0; i < products.length; i++){
+  //   for(let j=0; j < products[i].variations.length; j++){
+  //     let price = products[i].variations[j].price;
+  //     if(price > 50000){
+  //       pricePlus50k.push(products[i].variations[j])
+  //     }
+  //   }
+  // }
   return pricePlus50k;
 }
+<<<<<<< HEAD
+=======
+let variationsWithPriceMoreThan50k = getAllItemsWithPriceGreater50k(products)
+// console.log(variationsWithPriceMoreThan50k)
+>>>>>>> f839e0376277b7a717450b9ebfbd50b203632319
 // console.log(getAllItemsWithPriceGreater50k(products));
 
 // Exercise 2:
@@ -273,21 +286,34 @@ function getAllItemsWithPriceGreater50k(products) {
 // Example: [ 'Sony LED 40 inch', 'Mobile' ]
 function variationsWithQuantityFive (products){
   let titlesOfProductsQuantityFive = [];
-  for(let i = 0; i < products.length; i++){
-    for(let j= 0; j < products[i].variations.length; j++){
-      if(products[i].variations[j].quantity >= 5){
-       let title = products[i].title;
-       if(titlesOfProductsQuantityFive.indexOf(title)=== -1){
+  // for(let i = 0; i < products.length; i++){
+  //   for(let j= 0; j < products[i].variations.length; j++){
+  //     if(products[i].variations[j].quantity >= 5){
+  //      let title = products[i].title;
+  //      if(titlesOfProductsQuantityFive.indexOf(title)=== -1){
 
-         titlesOfProductsQuantityFive.push(products[i].title)
-       }
+  //        titlesOfProductsQuantityFive.push(products[i].title)
+  //      }
+
+  //     }
+
+  //   }
+  // }
+  for(let i=0; i < products.length; i++){
+    for(let j=0; j < products[i].variations.length; j++){
+      if(products[i].variations[j].quantity >= 5){
+       let product = products[i].title;
+        if(titlesOfProductsQuantityFive.indexOf(product) === -1){
+          titlesOfProductsQuantityFive.push(product)
+        }
 
       }
-
     }
   }
   return titlesOfProductsQuantityFive;
 }
+let productsWithOneVariationQuantityequFive = variationsWithQuantityFive(products);
+// console.log(productsWithOneVariationQuantityequFive)
 
 // console.log(variationsWithQuantityFive(products));
 
@@ -297,25 +323,45 @@ function variationsWithQuantityFive (products){
 function productWithHeightAveRating(products) {
   let maxAverageRatings = 0;
   let maxAverageItem;
-  for (let i = 0; i < products.length; i++) {
-    let sum = 0;
-    let average = null;
+  // for (let i = 0; i < products.length; i++) {
+  //   let sum = 0;
+  //   let average = null;
 
-    for (let j = 0; j < products[i].reviews.length; j++) {
+  //   for (let j = 0; j < products[i].reviews.length; j++) {
+  //     sum += products[i].reviews[j].rating;
+  //   }
+  //   average = sum / products[i].reviews.length;
+  //   if (maxAverageRatings < average) {
+  //     maxAverageRatings = average;
+  //     maxAverageItem = {
+  //       title: products[i].title,
+  //       maxAverage: average,
+  //     };
+  //   }
+  // }
+  for(let i=0; i < products.length; i++){
+    let sum = 0;
+    for(let j=0; j < products[i].reviews.length; j++){
       sum += products[i].reviews[j].rating;
     }
-    average = sum / products[i].reviews.length;
-    if (maxAverageRatings < average) {
-      maxAverageRatings = average;
+    let aveRatings = sum / products[i].reviews.length;
+    if(aveRatings > maxAverageRatings){
+      maxAverageRatings = aveRatings;
       maxAverageItem = {
-        title: products[i].title,
-        maxAverage: average,
-      };
+        "title" : products[i].title,
+        "maxAverageRatings" : maxAverageRatings
+      }
     }
   }
   return maxAverageItem;
 }
+<<<<<<< HEAD
 let resultRatings = productWithHeightAveRating(products);
+=======
+let productWithMaxAveRating = productWithHeightAveRating(products);
+// console.log(productWithMaxAveRating);
+// let resultRatings = productWithHeightAveRating(products);
+>>>>>>> f839e0376277b7a717450b9ebfbd50b203632319
 // console.log(resultRatings);
 
 // Exercise 4:
@@ -326,21 +372,37 @@ function productWithMostReviews(products) {
   let colorsOFMostReviewsProduct = [];
   let item = null;
   let productLength = 0;
-  for (let i = 0; i < products.length; i++) {
-    for (let j = 0; j < products[i].reviews.length; j++) {
-      if (products[i].reviews.length > productLength) {
+  // for (let i = 0; i < products.length; i++) {
+  //   for (let j = 0; j < products[i].reviews.length; j++) {
+  //     if (products[i].reviews.length > productLength) {
+  //       productLength = products[i].reviews.length;
+  //       item = products[i];
+  //     }
+  //   }
+  // }
+  // for (let k = 0; k < item.variations.length; k++) {
+  //   colorsOFMostReviewsProduct.push(item.variations[k].color);
+  // }
+  for(let i=0; i < products.length; i++){
+    for(let j=0; j < products[i].reviews.length; j++){
+      if(products[i].reviews.length > productLength){
         productLength = products[i].reviews.length;
-        item = products[i];
-      }
+         item = products[i];
+        }
     }
   }
-  for (let k = 0; k < item.variations.length; k++) {
-    colorsOFMostReviewsProduct.push(item.variations[k].color);
+  for(let k=0; k < item.variations.length; k++){
+    colorsOFMostReviewsProduct.push(item.variations[k].color)
   }
-
   return colorsOFMostReviewsProduct;
 }
+<<<<<<< HEAD
 let allColorsOfMostReviewedProduct = productWithMostReviews(products);
+=======
+let colorsOfMostReviewedProduct = productWithMostReviews(products)
+// console.log(colorsOfMostReviewedProduct)
+// let allColorsOfMostReviewedProduct = productWithMostReviews(products);
+>>>>>>> f839e0376277b7a717450b9ebfbd50b203632319
 // console.log(allColorsOfMostReviewedProduct);
 
 // Exercise 5:
@@ -349,17 +411,32 @@ let allColorsOfMostReviewedProduct = productWithMostReviews(products);
 
 function getUniqueUsers(products) {
   let uniqueUsers = [];
-  for (let i = 0; i < products.length; i++) {
-    for (let j = 0; j < products[i].reviews.length; j++) {
-      let user = products[i].reviews[j].user;
-      if (uniqueUsers.indexOf(user) === -1) {
-        uniqueUsers.push(user);
+  // for (let i = 0; i < products.length; i++) {
+  //   for (let j = 0; j < products[i].reviews.length; j++) {
+  //     let user = products[i].reviews[j].user;
+  //     if (uniqueUsers.indexOf(user) === -1) {
+  //       uniqueUsers.push(user);
+  //     }
+  //   }
+  // }
+  for(let i =0; i < products.length; i++){
+    let user;
+    for(let j=0; j < products[i].reviews.length; j++){
+      user = products[i].reviews[j].user;
+      if(uniqueUsers.indexOf(user) === -1){
+        uniqueUsers.push(products[i].reviews[j].user)
       }
     }
   }
-  return uniqueUsers.length;
+  return uniqueUsers;
 }
+<<<<<<< HEAD
 let users = getUniqueUsers(products);
+=======
+let uniqueUsers = getUniqueUsers(products)
+// console.log(uniqueUsers) 
+// let users = getUniqueUsers(products);
+>>>>>>> f839e0376277b7a717450b9ebfbd50b203632319
 // console.log(users);
 
 // Exercise 6:
@@ -367,27 +444,51 @@ let users = getUniqueUsers(products);
 // Example: { 'Ahmad': [ review1, review2 ], 'Ali': [ review1 ] }
 function groupReviewsByUser(products) {
   let groupedReviews = {};
-  for (let i = 0; i < products.length; i++) {
-    for (let j = 0; j < products[i].reviews.length; j++) {
+  // for(let i=0; i < products.length; i++){
+  //   for(let j= 0; j < products[i].reviews.length; j++){
+  //     let user = products[i].reviews[j].user
+  //     if(!groupedReviews[user]){
+  //        groupedReviews[user] = [];
+  //     }
+  //     groupedReviews[user].push(products[i].reviews[j])
+  //   }
+  // }
+  // for (let i = 0; i < products.length; i++) {
+  //   for (let j = 0; j < products[i].reviews.length; j++) {
+  //     let user = products[i].reviews[j].user;
+  //     if (!groupedReviews[user]) {
+  //       groupedReviews[user] = [];
+  //     }
+  //     groupedReviews[user].push(products[i].reviews[j]);
+  //   }
+  // }
+  // for (let user in groupedReviews) {
+  //   groupedReviews[user].sort(
+  //     (a, b) =>
+  //       new Date(b.date.split("-").reverse()) -
+  //       new Date(a.date.split("-").reverse())
+  //   );
+  // }
+  for(let i=0; i < products.length; i++){
+    for(let j=0; j < products[i].reviews.length; j++){
       let user = products[i].reviews[j].user;
-      if (!groupedReviews[user]) {
+      if(!groupedReviews[user]){
         groupedReviews[user] = [];
       }
-      groupedReviews[user].push(products[i].reviews[j]);
+      groupedReviews[user].push(products[i].reviews[j])
     }
-  }
-  for (let user in groupedReviews) {
-    groupedReviews[user].sort(
-      (a, b) =>
-        new Date(b.date.split("-").reverse()) -
-        new Date(a.date.split("-").reverse())
-    );
   }
   return groupedReviews;
 }
-console.log(groupReviewsByUser(products));
+let usergroupedReviews = groupReviewsByUser(products)
+// console.log(usergroupedReviews)
+// console.log(groupReviewsByUser(products));
 
+<<<<<<< HEAD
 let result = groupReviewsByUser(products);
+=======
+// let result = groupReviewsByUser(products);
+>>>>>>> f839e0376277b7a717450b9ebfbd50b203632319
 // console.log(result);
 
 // Exercise 7:
@@ -397,20 +498,34 @@ function getProductWithHighestStock(products) {
   let productWithHighestStock = [];
   let highestStock = 0;
   let product;
-  for (let i = 0; i < products.length; i++) {
-    let sum = 0;
-    for (let j = 0; j < products[i].variations.length; j++) {
-      sum += products[i].variations[j].quantity;
-    }
-    if (sum > highestStock) {
-      highestStock = sum;
-      product = products[i];
+  // for (let i = 0; i < products.length; i++) {
+  //   let sum = 0;
+  //   for (let j = 0; j < products[i].variations.length; j++) {
+  //     sum += products[i].variations[j].quantity;
+  //   }
+  //   if (sum > highestStock) {
+  //     highestStock = sum;
+  //     product = products[i];
+  //   }
+  // }
+  // productWithHighestStock.push({
+  //   title: product.title,
+  //   quantity: highestStock,
+  // });
+ for(let i=0; i < products.length; i++){
+  let sum =0;
+  for(let j=0; j < products[i].variations.length; j++){
+    sum += products[i].variations[j].quantity
+  }
+  if(sum > highestStock){
+    highestStock = sum;
+    product = {
+      "title" : products[i].title,
+      "netQuantity" : highestStock,
     }
   }
-  productWithHighestStock.push({
-    title: product.title,
-    quantity: highestStock,
-  });
+ }
+ productWithHighestStock.push(product)
   return productWithHighestStock;
 }
 let higestStockProduct = getProductWithHighestStock(products);
@@ -422,17 +537,30 @@ let higestStockProduct = getProductWithHighestStock(products);
 
 function getAllProductWithHighRatings(products) {
   let productsWithHighRatings = [];
-  for (let i = 0; i < products.length; i++) {
+  for(let i=0; i < products.length; i++){
     let count = 0;
-    for (let j = 0; j < products[i].reviews.length; j++) {
-      if (products[i].reviews[j].rating >= 4.5) {
-        count++;
+    for(let j=0; j < products[i].reviews.length; j++){
+      if(products[i].reviews[j].rating >= 4.5){
+         count++;
+         if (count / products[i].reviews.length > 0.8) {
+           productsWithHighRatings.push(products[i].title);
+         }
       }
+     
     }
-    if (count / products[i].reviews.length >= 0.8) {
-      productsWithHighRatings.push(products[i]);
-    }
+
   }
+  // for (let i = 0; i < products.length; i++) {
+  //   let count = 0;
+  //   for (let j = 0; j < products[i].reviews.length; j++) {
+  //     if (products[i].reviews[j].rating >= 4.5) {
+  //       count++;
+  //     }
+  //   }
+  //   if (count / products[i].reviews.length >= 0.8) {
+  //     productsWithHighRatings.push(products[i]);
+  //   }
+  // }
   return productsWithHighRatings;
 }
 let highRatingsProducts = getAllProductWithHighRatings(products);
@@ -447,27 +575,49 @@ function getProductWithHighestPriceRange(products) {
   let highestPriceRange = 0;
   let priceRange;
   let product;
-  for (let i = 0; i < products.length; i++) {
-    minPrice = products[i].variations[0].price;
-    maxPrice = products[i].variations[0].price;
-    for (let j = 0; j < products[i].variations.length; j++) {
-      if (products[i].variations[j].price < minPrice) {
-        minPrice = products[i].variations[j].price;
-      }
-      if (products[i].variations[j].price > maxPrice) {
-        maxPrice = products[i].variations[j].price;
-      }
-      priceRange = maxPrice - minPrice;
+ for(let i=0; i < products.length; i++){
+  for(let j=0; j < products[i].variations.length; j++){
+    let maxPrice = products[i].variations[0].price;
+    let minPrice = products[i].variations[0].price;
+    if(products[i].variations[j].price > maxPrice){
+      maxPrice = products[i].variations[j].price;
     }
-    if (priceRange > highestPriceRange) {
+    if(products[i].variations[j].price < minPrice){
+      minPrice = products[i].variations[j].price;
+    }
+    priceRange = maxPrice - minPrice;
+    if(priceRange > highestPriceRange){
       highestPriceRange = priceRange;
       product = products[i];
     }
   }
-  productWithHighestPriceRange = {
-    title: product.title,
-    priceRange: highestPriceRange,
-  };
+ }
+ 
+ productWithHighestPriceRange = {
+  "title" : product.title,
+  "priceRange" :highestPriceRange,
+ }
+  // for (let i = 0; i < products.length; i++) {
+  //   minPrice = products[i].variations[0].price;
+  //   maxPrice = products[i].variations[0].price;
+  //   for (let j = 0; j < products[i].variations.length; j++) {
+  //     if (products[i].variations[j].price < minPrice) {
+  //       minPrice = products[i].variations[j].price;
+  //     }
+  //     if (products[i].variations[j].price > maxPrice) {
+  //       maxPrice = products[i].variations[j].price;
+  //     }
+  //     priceRange = maxPrice - minPrice;
+  //   }
+  //   if (priceRange > highestPriceRange) {
+  //     highestPriceRange = priceRange;
+  //     product = products[i];
+  //   }
+  // }
+  // productWithHighestPriceRange = {
+  //   title: product.title,
+  //   priceRange: highestPriceRange,
+  // };
   return productWithHighestPriceRange;
 }
 let priceRange = getProductWithHighestPriceRange(products);
@@ -478,15 +628,21 @@ let priceRange = getProductWithHighestPriceRange(products);
 // _Example: sum of all (price * quantity) for each variation of all products.
 function getNetRevenue(products) {
   let totalRevenue = 0;
-  for (let i = 0; i < products.length; i++) {
-    for (let j = 0; j < products[i].variations.length; j++) {
-      totalRevenue +=
-        products[i].variations[j].price * products[i].variations[j].quantity;
+  // for (let i = 0; i < products.length; i++) {
+  //   for (let j = 0; j < products[i].variations.length; j++) {
+  //     totalRevenue +=
+  //       products[i].variations[j].price * products[i].variations[j].quantity;
+  //   }
+  // }
+  for(let i=0; i < products.length; i++){
+    for(let j=0; j < products[i].variations.length; j++){
+      totalRevenue += products[i].variations[j].price * products[i].variations[j].quantity;
     }
   }
   return totalRevenue;
 }
 let netRevenue = getNetRevenue(products);
+<<<<<<< HEAD
 // console.log(netRevenue);
 
 // 1. **Find All Reviews from a Specific User**
@@ -528,4 +684,7 @@ function getReviewsFroSpacificUser(products){
 // 10. **Find Products with Stock Below a Threshold**
 //     - Write a function to list all products that have at least one variation with a quantity below a specified threshold.
 
+=======
+console.log(netRevenue);
+>>>>>>> f839e0376277b7a717450b9ebfbd50b203632319
 

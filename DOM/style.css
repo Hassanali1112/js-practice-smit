@@ -1,0 +1,18 @@
+.heading_2 {
+  border: 1px solid gray;
+}
+
+.myclass{
+  font-size: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: rgb(197, 194, 194);
+}
+
+.success {
+  border: 1px dotted green;
+}
+
+.error {
+  border: 1px dotted red;
+}
