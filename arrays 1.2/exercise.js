@@ -266,7 +266,7 @@ function getAllItemsWithPriceGreater50k(products) {
   }
   return pricePlus50k;
 }
-console.log(getAllItemsWithPriceGreater50k(products));
+// console.log(getAllItemsWithPriceGreater50k(products));
 
 // Exercise 2:
 // Get all the product titles that have at least one variation with a quantity greater than 5.
@@ -289,7 +289,7 @@ function variationsWithQuantityFive (products){
   return titlesOfProductsQuantityFive;
 }
 
-console.log(variationsWithQuantityFive(products));
+// console.log(variationsWithQuantityFive(products));
 
 // Exercise 03:
 // Find the product with the highest average review rating.
@@ -316,7 +316,7 @@ function productWithHeightAveRating(products) {
   return maxAverageItem;
 }
 let resultRatings = productWithHeightAveRating(products);
-console.log(resultRatings);
+// console.log(resultRatings);
 
 // Exercise 4:
 // List the colors available for the product with the most reviews.
@@ -341,7 +341,7 @@ function productWithMostReviews(products) {
   return colorsOFMostReviewsProduct;
 }
 let allColorsOfMostReviewedProduct = productWithMostReviews(products);
-console.log(allColorsOfMostReviewedProduct);
+// console.log(allColorsOfMostReviewedProduct);
 
 // Exercise 5:
 // Calculate the total number of unique users who have left reviews across all products.
@@ -360,7 +360,7 @@ function getUniqueUsers(products) {
   return uniqueUsers.length;
 }
 let users = getUniqueUsers(products);
-console.log(users);
+// console.log(users);
 
 // Exercise 6:
 // Group reviews by users. Each user should have an array of reviews they have written, sorted by date (newest first).
@@ -388,7 +388,7 @@ function groupReviewsByUser(products) {
 console.log(groupReviewsByUser(products));
 
 let result = groupReviewsByUser(products);
-console.log(result);
+// console.log(result);
 
 // Exercise 7:
 // Find the product(s) with the highest total stock (sum of quantities of all variations).
@@ -414,7 +414,7 @@ function getProductWithHighestStock(products) {
   return productWithHighestStock;
 }
 let higestStockProduct = getProductWithHighestStock(products);
-console.log(higestStockProduct);
+// console.log(higestStockProduct);
 
 // Exercise 8:
 // Get all products where at least 80% of reviews have a rating of 4.5 or higher.
@@ -436,7 +436,7 @@ function getAllProductWithHighRatings(products) {
   return productsWithHighRatings;
 }
 let highRatingsProducts = getAllProductWithHighRatings(products);
-console.log(highRatingsProducts);
+// console.log(highRatingsProducts);
 
 // Exercise 9:
 // Find the product with the largest price range between its cheapest and most expensive variation.
@@ -471,7 +471,7 @@ function getProductWithHighestPriceRange(products) {
   return productWithHighestPriceRange;
 }
 let priceRange = getProductWithHighestPriceRange(products);
-console.log(priceRange);
+// console.log(priceRange);
 
 // Exercise 10 :
 // Calculate the total revenue that could be generated if all products were sold at their listed prices.
@@ -487,4 +487,45 @@ function getNetRevenue(products) {
   return totalRevenue;
 }
 let netRevenue = getNetRevenue(products);
-console.log(netRevenue);
+// console.log(netRevenue);
+
+// 1. **Find All Reviews from a Specific User**
+//    - Create a function that retrieves all reviews made by a specific user.f
+
+function getReviewsFroSpacificUser(products){
+  l
+  for(let i=0; i < products.length; i++){
+    for(let j=0; j < products[i].reviews.length; j++){
+      // if()
+    }
+  }
+}
+
+// 2. **Count Reviews by Rating**
+//    - Implement a function to count how many reviews exist for each rating (e.g., how many 4.0, 4.5, etc.).
+
+// 3. **Get Products by Color**
+//    - Write a function that returns all products that have variations of a specific color.
+
+// 4. **Get Average Rating of All Products**
+//    - Create a function to calculate the average rating for all products combined.
+
+// 5. **Get Products within a Specific Price Range**
+//    - Implement a function to get all products within a specific price range.
+
+// 6. **Find Products with No Reviews**
+//    - Create a function to list all products that do not have any reviews.
+
+// 7. **Get the Most Common Review Title**
+//    - Write a function to determine which review title is the most frequently used across all products.
+
+// 8. **Count Total Variations Across All Products**
+//    - Implement a function that counts the total number of variations across all products.
+
+// 9. **Get Products Sorted by Average Rating**
+//    - Create a function to return a list of products sorted by their average review rating in descending order.
+
+// 10. **Find Products with Stock Below a Threshold**
+//     - Write a function to list all products that have at least one variation with a quantity below a specified threshold.
+
+
