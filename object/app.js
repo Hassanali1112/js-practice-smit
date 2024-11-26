@@ -301,95 +301,35 @@ var watches = {
 
 var selectBrand = document.querySelector("#brandSelect");
 var selectModel = document.querySelector("#productSelect");
-
+var search = document.querySelector("button");
+var modelImg = document.querySelector("#productImage");
 
 var selectedBrand;
 var selectedModel;
 
-
 for(var brands in watches){
   selectBrand.innerHTML += `
-      <option value="${brands}">${brands}</option>
-  `
+        <option value=${brands}>${brands}</option>
+         `
 }
+
 selectBrand.addEventListener("change",()=>{
   selectedBrand = event.target.value;
-  console.log(selectBrand)
-  selectModel.innerHTML = "";
-  for(var models in watches[selectedBrand]){
+  for(var model in watches[selectedBrand]){
     selectModel.innerHTML += `
-      <option value=${watches[selectedBrand][models].name}>${watches[selectedBrand][models].name}</option>
-    `
-    // watches[selectedBrand][models].name
+    <option value="${watches[selectedBrand][model].name}">${watches[selectedBrand][model].name}</option>
+`
   }
 })
 
 selectModel.addEventListener("change",()=>{
   selectedModel = event.target.value;
-  // for(var )
 })
-// for(var brand in watches){
-//   selectBrand.innerHTML += `
-//   <option value="${brand}">${brand}</option>
-//   `
-// }
 
-// function selectBrandd () {
-//   var selecdedItem = event.target.value;
-// for(var model in watches[selecdedItem]){
-//   // selectModel.innerHTML +=  `<option>${model} </option>`
-//   console.log(watches[model])
-// }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-// var brandSelect = document.getElementById("brandSelect");
-// var productSelect = document.getElementById("productSelect");
-// var selectedBrand;
-// var selectedProduct;
-// for (var brands in watches) {
-//   brandSelect.innerHTML += `
-       
-//                    <option value='${brands}' > ${brands} </option>
-
-//        `;
-// }
-
-// function selectBrand() {
-//   selectedBrand = event.target.value;
-//   productSelect.innerHTML = "";
-//   for (var products in watches[selectedBrand]) {
-//     productSelect.innerHTML += `
-             
-//              <option value='${watches[selectedBrand][products].name}' > ${watches[selectedBrand][products].name} </option>
-//              `;
-//   }
-// }
-
-// function selectProduct() {
-//   selectedProduct = event.target.value;
-// }
-
-// var productImage = document.getElementById("productImage");
-// function searchProduct() {
-//   for (var keys in watches[selectedBrand]) {
-//     if (watches[selectedBrand][keys].name === selectedProduct) {
-//       console.log(watches[selectedBrand][keys]);
-//       productImage.src = watches[selectedBrand][keys].img;
-//     }
-//   }
-
-//   console.log(
-//     `The Search Brand is ${selectedBrand} and the Product is ${selectedProduct}`
-//   );
-// }
+search.addEventListener("click",()=>{
+  for(var item in watches[selectedBrand]){
+    if(watches[selectedBrand][item].name === selectedModel){
+      modelImg.src = watches[selectedBrand][item].img
+    }
+  }
+})
