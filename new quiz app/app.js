@@ -28,4 +28,20 @@ var htmlQuiz = [
 
 let quizContainer = document.querySelector(".quiz-container");
 
-fun
+let question = document.querySelector(".question")
+
+let option1 = document.querySelector("#option1");
+
+let option2 = document.querySelector("#option2");
+
+let option3 = document.querySelector("#option3");
+
+let option4 = document.querySelector("#option4");
+
+let label1 = document.querySelector("#label1");
+
+let label2 = document.querySelector("#label2");
+
+let label3 = document.querySelector("#label3");
+
+let label4 = document.querySelector("#label4");
