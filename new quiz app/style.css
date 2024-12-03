@@ -5,13 +5,14 @@
 }
 body{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #C2FFC7;
 }
 .quiz-container{
-    padding-top: 30px;
-    width: 400px;
+    padding-top: 40px;
+    width: 500px;
     height: 350px;
     border: 1px solid black;
     display: flex;
@@ -23,6 +24,9 @@ body{
     border-radius: 8px;
     overflow: hidden;
     background-color: #F5F5DC;
+}
+.question{
+    font-size: 1.5rem;
 }
 ul{
     list-style: none;
@@ -44,4 +48,7 @@ li{
     font-weight: 600;
     background-color: #526E48;
     border: none;
+}
+.result-container{
+    display: none;
 }
